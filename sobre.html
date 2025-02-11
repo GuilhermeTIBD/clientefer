@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>História da Empresa - F&A Informática</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://vlibras.gov.br/app/vlibras.js"></script>
+  <link rel="shortcut icon" href="favicon_io (1)/android-chrome-512x512.png" type="image/x-icon">
+  <style>
+    /* Reset e estilos globais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #1f1f1f;
+      color: #f4f4f4;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #000;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+    }
+
+    header img {
+      max-width: 160px;
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.1);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 8px 15px;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #2f3640, #4e79d5);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    nav ul li a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0, 123, 255, 0.8);
+    }
+
+    /* História da Empresa */
+    .history {
+      padding: 120px 10%;
+      text-align: center;
+      background: #161616;
+      min-height: 100vh;
+      box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      animation: fadeInSection 1s ease-in-out;
+    }
+    .history h2 {
+      font-size: 3.5rem;
+      margin-bottom: 30px;
+      color: #61dafb;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+    .history p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 40px;
+    }
+
+    /* Blog */
+    .blog {
+      padding: 80px 10%;
+      background: #212c3d;
+      color: #f4f4f4;
+    }
+    .blog h3 {
+      font-size: 2.5rem;
+      color: #4e79d5;
+      margin-bottom: 20px;
+    }
+    .blog-posts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    .blog-post {
+      background: #2b3a47;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .blog-post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    }
+    .blog-post h4 {
+      color: #61dafb;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    .blog-post p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+    .blog-post a {
+      color: #4e79d5;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .blog-post a:hover {
+      text-decoration: underline;
+      color: #ff6f61;
+    }
+
+    /* Responsividade */
+    .blog-post iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .history h2 {
+        font-size: 28px;
+      }
+
+      .history p, 
+      .blog-post p {
+        font-size: 14px;
+      }
+
+      .blog-posts {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* Rodapé */
+    footer {
+      background: #1a2632;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    footer a {
+      color: #4e79d5;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+/* Fundo animado */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.history {
+  background: linear-gradient(-45deg, #161616, #1f1f1f, #2b3a47, #161616);
+  background-size: 300% 300%;
+  animation: gradientBG 10s ease infinite;
+  padding: 120px 10%;
+  text-align: justify;
+  min-height: 100vh;
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+/* Animação dos textos */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.history h2 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: #61dafb;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  text-align: center;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* Efeito de brilho no título */
+@keyframes glowingText {
+  0% { text-shadow: 0 0 5px #61dafb, 0 0 10px #61dafb; }
+  50% { text-shadow: 0 0 15px #4e79d5, 0 0 25px #4e79d5; }
+  100% { text-shadow: 0 0 5px #61dafb, 0 0 10px #61dafb; }
+}
+
+.history h2 {
+  animation: glowingText 3s infinite alternate;
+}
+
+/* Efeito de digitação no texto */
+.typed-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #61dafb;
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .history {
+    padding: 80px 5%;
+  }
+
+  .history h2 {
+    font-size: 2.5rem;
+  }
+
+  .history p {
+    font-size: 1rem;
+  }
+}
+/* Menu Hamburguer */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  z-index: 1001;
+}
+
+.menu-toggle div {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+/* Exibir o menu hamburguer em telas pequenas */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 5%;
+    background-color: #000;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    width: 250px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav ul li a {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 8px 15px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, #2f3640, #4e79d5);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.8);
+  }
+
+  nav ul li a:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Animação de transição do menu hamburguer */
+.menu-toggle div:nth-child(1) {
+  transform: ${isOpen ? 'rotate(45deg) translate(5px, 5px)' : 'rotate(0)'};
+}
+
+.menu-toggle div:nth-child(2) {
+  opacity: ${isOpen ? '0' : '1'};
+}
+
+.menu-toggle div:nth-child(3) {
+  transform: ${isOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'rotate(0)'};
+}
+
+
+  </style>
+  <style>
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #2f3640, #4e79d5);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+  
+    nav ul li a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0, 123, 255, 0.8);
+    }
+  
+    /* Estilos para o menu mobile */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 5%;
+        background-color: #000;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        width: 250px;
+        flex-direction: column;
+        gap: 20px;
+      }
+  
+      nav ul.active {
+        display: flex;
+      }
+  
+      nav ul li a {
+        font-size: 1.3rem;
+        padding: 12px 18px;
+      }
+    }
+    nav ul {
+  display: none;
+  position: absolute;
+  top: 215%; /* Aumente esse valor para descer mais */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  width: 220px;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Quando o menu é ativado */
+nav ul.active {
+  display: flex;
+}
+.whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .whatsapp-button img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .whatsapp-button:hover {
+    transform: scale(1.1);
+  }
+  .navbar {
+    display: flex !important;
+    justify-content: center;
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+.botao {
+    display: inline-block !important;
+    padding: 10px 20px;
+    background-color: #3A5FCD; /* Cor azul */
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+@media (min-width: 1024px) {
+    .botao {
+        display: none;
+    }
+}
+@media (min-width: 1024px) { /* Só aplica para telas grandes */
+    .navbar {
+        display: flex !important;
+        justify-content: center;
+        gap: 10px; /* Espaço entre os botões */
+    }
+
+    .botao {
+        display: inline-block !important;
+        padding: 10px 20px;
+        background-color: #3A5FCD; /* Azul */
+        color: white;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+}
+@media (max-width: 1023px) { /* Para celulares e tablets */
+    .navbar {
+        display: none !important; /* Esconde os botões */
+    }
+}
+
+@media (min-width: 1024px) { /* Para computadores */
+    .navbar {
+        display: flex !important;
+        justify-content: center;
+        gap: 10px; /* Espaço entre os botões */
+    }
+
+    .botao {
+        display: inline-block !important;
+        padding: 10px 20px;
+        background-color: #3A5FCD; /* Azul */
+        color: white;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+}
+.botao-suporte {
+    background-color: #0078d4; /* Azul do suporte */
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.botao-suporte:hover {
+    background-color: #005ea6; /* Azul mais escuro no hover */
+    transform: scale(1.05);
+}
+.botao-estilizado {
+    background: linear-gradient(to bottom, #4a73cc, #2a4b8d); /* Degrade azul */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.botao-estilizado:hover {
+    background: linear-gradient(to bottom, #5a85e0, #3a5ea8); /* Degrade azul mais claro */
+    transform: scale(1.05);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4);
+}
+.navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    .navbar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 8px 15px;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #2f3640, #4e79d5);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    .navbar  ul li a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0, 123, 255, 0.8);
+    }
+
+  </style>
+  
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Efeito de entrada ao rolar
+      const historySection = document.querySelector(".history");
+      function fadeInOnScroll() {
+        const rect = historySection.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) {
+          historySection.style.opacity = "1";
+          historySection.style.transform = "translateY(0)";
+        }
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+  const videos = document.querySelectorAll('video');
+  
+  videos.forEach(function (video) {
+    video.pause();
+  });
+});
+
+      window.addEventListener("scroll", fadeInOnScroll);
+      fadeInOnScroll(); // Executa ao carregar
+  
+      // Efeito de digitação
+      const textoOriginal = `Fundada em 2014 na cidade de Sorocaba, a empresa nasceu das aspirações de um jovem empreendedor, Fernando Azevedo. Com apenas 17 anos...`;
+      let i = 0;
+      function digitarTexto() {
+        if (i < textoOriginal.length) {
+          document.getElementById("typed-text").innerHTML += textoOriginal.charAt(i);
+          i++;
+          setTimeout(digitarTexto, 30);
+        }
+      }
+      setTimeout(digitarTexto, 500);
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navUl = document.querySelector("nav ul");
+
+  menuToggle.addEventListener("click", function () {
+    navUl.classList.toggle("active");
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navUl = document.querySelector("nav ul");
+
+  menuToggle.addEventListener("click", function () {
+    navUl.classList.toggle("active");
+    menuToggle.classList.toggle("active");
+  });
+});
+
+  </script>
+  
+<body>
+  <!-- Plugin VLibras -->
+  <div vw class="enabled" id="vlibras-badge"></div>
+  <script type="text/javascript">
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <header>
+    <img src="img/Apresentação1/Slide1.PNG" alt="Logo F&A Informática">
+    <button class="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
+    
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html">Serviços</a></li>
+        <li><a href="index.html">Sobre</a></li>
+        <li><a href="suporte.html">Suporte</a></li>
+      
+      </ul>
+    </nav>
+    <div class="navbar">
+       <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html">Serviços</a></li>
+        <li><a href="index.html">Sobre</a></li>
+        <li><a href="suporte.html">Suporte</a></li>
+      
+      </ul>
+        
+    </div>
+    
+  </header>
+  
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  
+<BR>
+    <BR>
+
+        <BR>
+
+            <BR>
+
+             
+  <!-- Seção História da Empresa -->
+  <section class="history" id="history">
+    <h2>A História da F&A Informática</h2>
+    <p>Fundada em 2014 na cidade de Sorocaba, a empresa nasceu das aspirações de um jovem empreendedor, Fernando Azevedo. Com apenas 17 anos, recém-saído do ensino médio e após concluir um curso técnico de informática, Fernando decidiu iniciar sua jornada no mundo dos negócios.<BR><BR>
+
+        Nos primeiros meses, ele enfrentou o desafio de atender a mais de 50 clientes por mês, focando exclusivamente na manutenção de equipamentos de informática. A dedicação e o compromisso com a qualidade do serviço rapidamente solidificaram a reputação da F&A na região. À medida que a empresa crescia, Fernando também se desenvolvia, investindo em sua educação com graduação e pós-graduação na área de tecnologia.<BR><BR>
+        
+        Com o passar dos anos, a F&A evoluiu, sempre se adaptando às novas demandas do mercado. Em 2024, a empresa deu um passo significativo ao migrar para o setor de automação comercial. Essa transição permitiu a introdução de novos produtos e serviços, expandindo a atuação da F&A para mais de 60 segmentos, incluindo padarias, bares, lojas em geral e prestadores de serviços, atendendo atualmente a mais de 500 empresas em Sorocaba e região.<BR><BR>
+        
+        O compromisso da F&A com seus clientes sempre foi uma prioridade, e a empresa está agora em processo de expansão para todo o Brasil. Em 2025, Fernando recebeu o apoio de Raphael Albiero, especialista em marketing, que se tornou sócio administrador, trazendo novas estratégias e perspectivas para a empresa.<BR><BR>
+        
+        Hoje, a F&A é sinônimo de eficiência e inovação, pronta para atender às necessidades de seus clientes com um sistema robusto e confiável. "Venha ser cliente F&A e experimente a diferença." A história da F&A é uma prova de que com visão e trabalho duro, é possível transformar sonhos em realidade.</p>
+  </section>
+
+  <!-- Seção Blog -->
+  <section class="blog" id="blog">
+    <h3>Últimos Posts</h3>
+    <div class="blog-posts">
+      <div class="blog-post">
+        <h4>Atenção donos de restaurantes !! </h4>
+        <p>Transforme seu Restaurante com Estratégias Inovadoras e Práticas!</p>
+        <iframe src="vid/vd.mp4" title="Video Blog 1"></iframe>
+        <a href="https://www.instagram.com/feainformatica">Leia Mais</a>
+      </div>
+      <div class="blog-post">
+        <h4>Atenção empreendedores!!!!</h4>
+        <p>Veja como proteger sua empresa contra as ameaças cibernéticas mais comuns...</p>
+        <iframe src="vid/WhatsApp Video 2025-02-10 at 22.38.17 (1).mp4" title="Video Blog 2"></iframe>
+        <a href="https://www.instagram.com/feainformatica">Leia Mais</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 F&A Informática. Todos os direitos reservados. | <a href="#">Política de Privacidade</a></p>
+  </footer>
+  <a href="https://wa.me/5515991866243" class="whatsapp-button" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navUl = document.querySelector("nav ul");
+
+      menuToggle.addEventListener("click", function () {
+        navUl.classList.toggle("active");
+      });
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+  const iframes = document.querySelectorAll('iframe');
+  
+  // Pausar os vídeos ao carregar a página
+  iframes.forEach(function (iframe) {
+    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+  });
+});
+
+  </script>
+  
+</body>
+</html>
