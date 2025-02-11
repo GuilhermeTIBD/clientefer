@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suporte - F&A Informática</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://vlibras.gov.br/app/vlibras.js"></script>
+  <link rel="shortcut icon" href="favicon_io (1)/android-chrome-512x512.png" type="image/x-icon">
+  <style>
+    /* Reset e estilos globais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #1f1f1f;
+      color: #f4f4f4;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Header */
+    header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #000; /* Alterado para preto */
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+    header img {
+      max-width: 160px;
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.1);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 8px 15px;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #2f3640, #4e79d5);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    nav ul li a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0, 123, 255, 0.8);
+    }
+
+    /* Seção Suporte */
+    .support {
+      padding: 120px 10%;
+      text-align: center;
+      background: #161616;
+      min-height: 100vh;
+      box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      animation: fadeInSection 1s ease-in-out;
+    }
+    .support h2 {
+      font-size: 3.5rem;
+      margin-bottom: 30px;
+      color: #61dafb;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+    }
+    .support .contact-info {
+      margin-bottom: 50px;
+    }
+    .support .contact-info p {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+    .support .contact-info .contact-details {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .support .contact-info .contact-details a {
+      font-size: 1.4rem;
+      color: #4e79d5;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .support .contact-info .contact-details a:hover {
+      text-decoration: underline;
+      color: #ff6f61;
+    }
+
+    /* Ferramentas de Acesso Remoto */
+    .tools {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 50px;
+      animation: slideIn 1.5s ease-out;
+    }
+    .tools .tool {
+      background: #212c3d;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      text-align: center;
+      width: 300px;
+      flex: 1;
+      min-width: 280px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tools .tool:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    }
+    .tools .tool img {
+      width: 90px;
+      margin-bottom: 20px;
+    }
+    .tools .tool h3 {
+      font-size: 1.9rem;
+      color: #4e79d5;
+      margin-bottom: 15px;
+    }
+    .tools .tool p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 15px;
+    }
+    .tools .tool a {
+      font-size: 1.2rem;
+      color: #0c70b4;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .tools .tool a:hover {
+      text-decoration: underline;
+      color: #ff6f61;
+    }
+
+    /* Abertura de Chamados */
+    .ticket {
+      background: #212c3d;
+      padding: 30px;
+      border-radius: 10px;
+      margin-top: 30px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .ticket h3 {
+      color: #4e79d5;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .ticket p {
+      font-size: 1rem;
+      color: #ddd;
+      margin-bottom: 10px;
+    }
+    .ticket a {
+      color: #4e79d5;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .ticket a:hover {
+      text-decoration: underline;
+      color: #ff6f61;
+    }
+
+    /* Rodapé */
+    footer {
+      background: #1a2632;
+      padding: 20px;
+      text-align: center;
+      color: #fff;
+      font-size: 1rem;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    footer a {
+      color: #4e79d5;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInSection {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .tools {
+        flex-direction: column;
+        align-items: center;
+      }
+      header img {
+        max-width: 120px;
+      }
+      
+    }
+    .support h2 {
+  font-size: 28px; /* Tamanho padrão para desktop */
+  text-align: center;
+}
+
+/* Ajuste para telas menores (mobile) */
+@media (max-width: 768px) {
+  .support h2 {
+    font-size: 18px; /* Diminui bem o título no celular */
+  }
+
+  .support p, 
+  .support a {
+    font-size: 14px; /* Diminui os parágrafos e links */
+  }
+
+  .support .contact-details p {
+    font-size: 13px; /* Texto dentro do bloco de contato */
+  }
+}
+.botao-estilizado {
+    background: linear-gradient(to bottom, #4a73cc, #2a4b8d); /* Degrade azul */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.botao-estilizado:hover {
+    background: linear-gradient(to bottom, #5a85e0, #3a5ea8); /* Degrade azul mais claro */
+    transform: scale(1.05);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+  </style>
+</head>
+<body>
+  <!-- Plugin VLibras -->
+  <div vw class="enabled" id="vlibras-badge"></div>
+  <script type="text/javascript">
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+<body> <!-- Inicio do corpo da página -->
+
+  ... <!-- Conteúdo da página -->
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+</body> <!-- Fim do corpo da página -->
+  <header>
+    <img src="img/Apresentação1/Slide1.PNG" alt="Logo F&A Informática">
+    <button class="menu-toggle">☰</button>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="index.html">Serviços</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="suporte.html">Suporte</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="support" id="support">
+    <h2>Suporte ao Cliente</h2>
+    <div class="contact-info">
+      <p>Atendimento de segunda a sexta-feira, das 9h às 18h (exceto feriados)</p>
+      <div class="contact-details">
+        <a href="tel:+5515991866243">📞 (15) 99186-6243</a>
+       
+      </div>
+      <br>
+      <p>Após as 18h, feriados e finais de semana:</p>
+      <div class="contact-details">
+        <p>🔐 (Fechados)</p> 
+        
+      </div>
+  
+    </div>
+
+    <h3>Ferramentas de Acesso Remoto</h3>
+    <br>
+    <div class="tools">
+      <div class="tool">
+        <img src="img/SUPREMO.png" alt="SUPREMO">
+        <h3>SUPREMO</h3>
+        <p>Clique para acessar o SUPREMO.</p>
+        <a href="https://www.supremoremote.com.br" target="_blank">Acessar Supremo</a>
+      </div>
+      <div class="tool">
+        <img src="img/anydesk.jpg" alt="ANYDESK">
+        <h3>ANYDESK</h3>
+        <p>Clique para acessar o ANYDESK.</p>
+        <a href="https://anydesk.com/pt" target="_blank">Acessar AnyDesk</a>
+      </div>
+      <div class="tool">
+        <img src="img/teamviewer-logo-11.png" alt="TEAM VIEWER">
+        <h3>TEAM VIEWER</h3>
+        <p>Clique para acessar o TEAM VIEWER.</p>
+        <a href="https://www.teamviewer.com/pt/" target="_blank">Acessar Team Viewer</a>
+      </div>
+    </div>
+<!-- Botão do WhatsApp -->
+<a href="https://wa.me/5515991866243" class="whatsapp-button" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<!-- Estilos CSS -->
+<style>
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .whatsapp-button img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .whatsapp-button:hover {
+    transform: scale(1.1);
+  }
+</style>
+    <div class="ticket">
+      <h3>Abertura de Chamados</h3>
+      <p>Para abrir um chamado técnico, clique no link abaixo:</p>
+      <a href="https://feainformatica.tomticket.com/?account=4281216P24092024123858" target="_blank">Abrir Chamado Técnico</a>
+    </div>
+    <br>
+    
+   
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.0897002327933!2d-47.45930352467203!3d-23.493278378846696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x950fbcf0b2f133f3%3A0xe5986b8485a577eb!2sF%26A%20Inform%C3%A1tica!5e0!3m2!1spt-BR!2sbr!4v1738879325806!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="ticket">
+      <h3>Venha Nos Conhecer!</h3>
+    </div>
+  </section>
+  <style>/* Reset e estilos globais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #1f1f1f;
+      color: #f4f4f4;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #000;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+    }
+    header img {
+      max-width: 160px;
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Menu */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      padding: 8px 15px;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #2f3640, #4e79d5);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+    nav ul li a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0, 123, 255, 0.8);
+    }
+    
+    /* Botão Menu Hambúrguer */
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      outline: none;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      /* Ajusta o menu para telas menores */
+      .menu-toggle {
+        display: block;
+      }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        text-align: center;
+        padding: 15px 0;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+      header img {
+        max-width: 120px;
+      }
+    
+      /* Ajusta seções */
+      .support, .tools, .ticket {
+        padding: 80px 5%;
+        text-align: center;
+      }
+    
+      /* Ajusta o mapa */
+      iframe {
+        width: 100%;
+        height: 300px;
+      }
+    }
+    /* Botão Menu Hambúrguer */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  position: absolute; /* Define a posição absoluta */
+  top: 20px; /* Distância do topo */
+  right: 20px; /* Distância da direita */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  /* Ajusta o menu para telas menores */
+  .menu-toggle {
+    display: block; /* Exibe o botão de menu */
+  }
+}
+
+    </style>
+
+  <footer>
+    <p>&copy; 2025 F&A Informática. Todos os direitos reservados. | <a href="#">Política de Privacidade</a></p>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navUl = document.querySelector("nav ul");
+  
+      menuToggle.addEventListener("click", function () {
+        navUl.classList.toggle("active");
+      });
+    });
+  </script>
+  
+</body>
+</html>
